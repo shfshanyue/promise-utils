@@ -3,7 +3,7 @@
 # promise-map
 
 [![npm version](https://img.shields.io/npm/v/pp-map.svg?style=flat-square)](https://www.npmjs.org/package/pp-map)
-![build status](https://img.shields.io/github/workflow/status/shfshanyue/pp-map/test?style=flat-square)
+![build status](https://img.shields.io/github/workflow/status/shfshanyue/promise-map/test?style=flat-square)
 [![install size](https://packagephobia.now.sh/badge?p=pp-map)](https://packagephobia.now.sh/result?p=pp-map)
 [![npm downloads](https://img.shields.io/npm/dw/pp-map.svg?style=flat-square)](http://npm-stat.com/charts.html?package=pp-map)
 
