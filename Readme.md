@@ -1,6 +1,12 @@
 # promise-map
 
-promise-map control promises concurrently and support Promise.all and allSettled. It does not short-circuit when value is rejected if you need.
+promise-map control promises concurrently and support Promise.all and **allSettled**. It does not short-circuit when value is rejected if you need.
+
+## Install
+
+``` bash
+$ npm install pp-map
+```
 
 ## Usage
 

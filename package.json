@@ -1,7 +1,7 @@
 {
   "name": "pp-map",
   "version": "1.0.0",
-  "description": "",
+  "description": "Map over promises concurrently and support promise.allsettled",
   "main": "index.js",
   "files": [
     "index.js"
@@ -9,10 +9,24 @@
   "scripts": {
     "test": "mocha test.js"
   },
+  "keywords": [
+    "promise",
+    "map",
+    "resolved",
+    "async",
+    "await",
+    "promises",
+    "concurrently",
+    "concurrency",
+    "parallel",
+    "bluebird",
+    "allSettled"
+  ],
   "author": "shfshanyue",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.1.1"
+    "mocha": "^7.1.1",
+    "time-span": "^4.0.0"
   }
 }

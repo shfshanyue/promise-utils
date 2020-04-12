@@ -49,7 +49,11 @@ function reflect (promise) {
 module.exports = function (list, map, { concurrency = Infinity, settled = false } = {}) {
   const limit = new Limit(concurrency)
   return Promise.all(list.map((item, ...args) => {
-    const result = limit.build(() => item.then(x => map(x, ...args)))
+    const result = limit.build(async () => {
+      // Item may be promise
+      const x = await item
+      return map(x, ...args)
+    })
     return settled ? reflect(result) : result
   }))
 }
