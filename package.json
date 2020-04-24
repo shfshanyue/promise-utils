@@ -1,6 +1,6 @@
 {
   "name": "pp-map",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Map over promises concurrently and support promise.allsettled",
   "main": "index.js",
   "files": [
