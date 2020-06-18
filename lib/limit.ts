@@ -34,26 +34,3 @@ class Limit {
     }
   }
 }
-
-function reflect (promise) {
-  return promise.then(
-    v => {
-      return { status: 'fulfilled', value: v };
-    },
-    error => {
-      return { status: 'rejected', reason: error };
-    }
-  )
-}
-
-module.exports = function (list, map, { concurrency = Infinity, settled = false } = {}) {
-  const limit = new Limit(concurrency)
-  return Promise.all(list.map((item, ...args) => {
-    return limit.build(async () => {
-      // Item may be promise
-      const x = await item
-      const result = map(x, ...args)
-      return settled ? reflect(result) : result
-    })
-  }))
-}
