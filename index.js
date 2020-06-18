@@ -1,59 +1,17 @@
-class Limit {
-  constructor (n) {
-    this.limit = n
-    this.count = 0
-    this.queue = []
-  }
-
-  enqueue (fn) {
-    return new Promise((resolve, reject) => {
-      this.queue.push({ fn, resolve, reject })
-    })
-  }
-
-  dequeue () {
-    if (this.count < this.limit && this.queue.length) {
-      const { fn, resolve, reject } = this.queue.shift()
-      this.run(fn).then(resolve).catch(reject)
-    }
-  }
-
-  async run (fn) {
-    this.count++
-    const value = await fn()
-    this.count--
-    this.dequeue()
-    return value
-  }
-
-  build (fn) {
-    if (this.count < this.limit) {
-      return this.run(fn)
-    } else {
-      return this.enqueue(fn)
-    }
-  }
-}
-
-function reflect (promise) {
-  return promise.then(
-    v => {
-      return { status: 'fulfilled', value: v };
-    },
-    error => {
-      return { status: 'rejected', reason: error };
-    }
-  )
-}
-
-module.exports = function (list, map, { concurrency = Infinity, settled = false } = {}) {
-  const limit = new Limit(concurrency)
-  return Promise.all(list.map((item, ...args) => {
-    return limit.build(async () => {
-      // Item may be promise
-      const x = await item
-      const result = map(x, ...args)
-      return settled ? reflect(result) : result
-    })
-  }))
-}
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./lib/filter"), exports);
+__exportStar(require("./lib/limit"), exports);
+__exportStar(require("./lib/map"), exports);
+__exportStar(require("./lib/retry"), exports);
+__exportStar(require("./lib/sleep"), exports);

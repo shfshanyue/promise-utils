@@ -1,22 +1,29 @@
-function reflect (promise) {
-  return promise.then(
-    v => {
-      return { status: 'fulfilled', value: v }
-    },
-    error => {
-      return { status: 'rejected', reason: error }
-    }
-  )
+import { Limit } from './limit'
+
+export interface MapOptions {
+  readonly concurrency?: number;
+  readonly settled?: boolean;
 }
 
-function map (list, maper, { concurrency = Infinity, settled = false } = {}) {
-  const limit = new Limit(concurrency)
-  return Promise.all(list.maper((item, ...args) => {
+export type Mapper<Element = any, NewElement = unknown> = (
+  element: Element,
+  index: number
+) => NewElement | Promise<NewElement>;
+
+export function map<Element, NewElement> (
+  it: Iterable<Element>,
+  mapper: Mapper<Element, NewElement>,
+  { concurrency = Infinity }: MapOptions = {}
+) {
+  const limit = new Limit<NewElement>(concurrency)
+  const list = Array.from(it)
+  const listJob = list.map((item, index) => {
     return limit.build(async () => {
       // Item may be promise
       const x = await item
-      const result = maper(x, ...args)
-      return settled ? reflect(result) : result
+      const result = mapper(x, index)
+      return result
     })
-  }))
+  })
+  return Promise.all(listJob)
 }

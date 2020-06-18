@@ -6,8 +6,12 @@
   "files": [
     "index.js"
   ],
+  "engines": {
+		"node": ">=8"
+	},
   "scripts": {
     "test": "mocha test.js",
+    "build": "tsc",
     "ncu": "ncu"
   },
   "keywords": [
@@ -21,7 +25,9 @@
     "concurrency",
     "parallel",
     "bluebird",
-    "allSettled"
+    "allSettled",
+    "delay",
+    "sleep"
   ],
   "author": "shfshanyue",
   "license": "ISC",
