@@ -2,15 +2,12 @@
   "name": "promise-utils",
   "version": "1.0.4",
   "description": "Map over promises concurrently and support promise.allsettled",
-  "main": "index.js",
-  "files": [
-    "index.js"
-  ],
+  "main": "dist/index.js",
   "engines": {
-		"node": ">=8"
-	},
+    "node": ">=8"
+  },
   "scripts": {
-    "test": "mocha test.js",
+    "test": "mocha test/*.ts -r ts-node/register",
     "build": "tsc",
     "ncu": "ncu"
   },
@@ -32,10 +29,13 @@
   "author": "shfshanyue",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
     "mocha": "^8.0.1",
-    "time-span": "^4.0.0",
     "npm-check-updates": "^7.0.1",
+    "time-span": "^4.0.0",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }
 }

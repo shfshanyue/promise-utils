@@ -3,6 +3,25 @@ interface RetryOptions {
   readonly onFailedAttempt?: (error: Error) => void | Promise<void>;
 }
 
+export class AbortError extends Error {
+  originalError: Error
+
+  constructor(message: string | Error) {
+    super()
+
+    if (message instanceof Error) {
+      this.originalError = message;
+      ({message} = message)
+    } else {
+      this.originalError = new Error(message)
+      this.originalError.stack = this.stack
+    }
+
+    this.name = 'AbortError'
+    this.message = message
+  }
+}
+
 export async function retry <T>(
   run: (attemptCount: number) => Promise<T> | T,
   {
@@ -10,18 +29,18 @@ export async function retry <T>(
     onFailedAttempt = () => {},
   }: RetryOptions = {}
 ) {
-  let count = 0
-  async function exec () {
+  let count = 1
+  async function exec (): Promise<T> {
     try {
-      await run(count)
+      const result = await run(count)
+      return result
     } catch (e) {
-      count++
-      if (count < times) {
-        await onFailedAttempt(e)
-        await exec()
-      } else {
+      if (count > times || e instanceof AbortError) {
         throw e
       }
+      count++
+      await onFailedAttempt(e)
+      return exec()
     }
   }
   return exec()
