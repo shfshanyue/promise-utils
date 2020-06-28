@@ -1,7 +1,9 @@
-# promise-map
+# promise-utils
+
+A few tools about promise, like delay, map, filter and retry.
 
 [![npm version](https://img.shields.io/npm/v/@shanyue/promise-utils.svg?style=flat-square)](https://www.npmjs.org/package/@shanyue/promise-utils)
-![build status](https://img.shields.io/github/workflow/status/shfshanyue/promise-map/test?style=flat-square)
+![build status](https://img.shields.io/github/workflow/status/shfshanyue/promise-utils/test?style=flat-square)
 [![install size](https://packagephobia.now.sh/badge?p=@shanyue/promise-utils)](https://packagephobia.now.sh/result?p=@shanyue/promise-utils)
 [![npm downloads](https://img.shields.io/npm/dw/@shanyue/promise-utils.svg?style=flat-square)](http://npm-stat.com/charts.html?package=@shanyue/promise-utils)
 
@@ -10,6 +12,8 @@
 ``` bash
 $ npm install @shanyue/promise-utils
 ```
+
+> Require node > 10.x
 
 ## Usage
 

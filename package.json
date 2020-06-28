@@ -4,7 +4,7 @@
   "description": "Map over promises concurrently and support promise.allsettled",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     "test": "mocha test/*.ts -r ts-node/register",
