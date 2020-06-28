@@ -1,20 +1,20 @@
 # promise-map
 
-[![npm version](https://img.shields.io/npm/v/promise-utils.svg?style=flat-square)](https://www.npmjs.org/package/promise-utils)
+[![npm version](https://img.shields.io/npm/v/p-utils.svg?style=flat-square)](https://www.npmjs.org/package/p-utils)
 ![build status](https://img.shields.io/github/workflow/status/shfshanyue/promise-map/test?style=flat-square)
-[![install size](https://packagephobia.now.sh/badge?p=promise-utils)](https://packagephobia.now.sh/result?p=promise-utils)
-[![npm downloads](https://img.shields.io/npm/dw/promise-utils.svg?style=flat-square)](http://npm-stat.com/charts.html?package=promise-utils)
+[![install size](https://packagephobia.now.sh/badge?p=p-utils)](https://packagephobia.now.sh/result?p=p-utils)
+[![npm downloads](https://img.shields.io/npm/dw/p-utils.svg?style=flat-square)](http://npm-stat.com/charts.html?package=p-utils)
 
 ## Install
 
 ``` bash
-$ npm install promise-utils
+$ npm install p-utils
 ```
 
 ## Usage
 
 ``` ts
-import { map, filter, retry, sleep } from 'promise-utils'
+import { map, filter, retry, sleep } from 'p-utils'
 
 
 await filter([Promise.resolve(1), 2, 3, 4], (x: number) => Boolean(x % 2))
