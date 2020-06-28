@@ -1,6 +1,6 @@
 {
   "name": "promise-utils",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Map over promises concurrently and support promise.allsettled",
   "main": "dist/index.js",
   "engines": {
