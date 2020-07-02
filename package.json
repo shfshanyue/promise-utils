@@ -1,7 +1,7 @@
 {
   "name": "@shanyue/promise-utils",
   "version": "2.0.3",
-  "description": "Map over promises concurrently and support promise.allsettled",
+  "description": "Userful promise utils, include map, filter, retry and sleep",
   "main": "dist/index.js",
   "engines": {
     "node": ">=10"
@@ -14,6 +14,7 @@
   "keywords": [
     "promise",
     "map",
+    "filter",
     "resolved",
     "async",
     "await",
